@@ -165,29 +165,29 @@
           
           <h3 class="text-base sm:text-lg font-bold text-[#0F172A] mb-4 flex items-center gap-2">
             <span class="w-8 h-8 rounded-lg bg-[#FFF1F5] text-[#E2004B] flex items-center justify-center font-bold text-sm">✓</span>
-            The KONU Assurance
+            Why people trust KONU
           </h3>
 
           <ul class="space-y-4 text-xs sm:text-sm text-[#343A46]">
             <li class="flex items-start space-x-3">
               <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
               <div>
-                <strong class="font-bold text-[#0F172A] block">100% In-House Verified Field Staff</strong>
-                <p class="text-xs text-[#555D6B] mt-0.5">No random brokers or outsourced day-laborers. Every inspection is GPS locked.</p>
+                <strong class="font-bold text-[#0F172A] block">Our own staff visit your property</strong>
+                <p class="text-xs text-[#555D6B] mt-0.5">We don't send random agents or brokers. Every visit is done by a full-time KONU team member with GPS check-in.</p>
               </div>
             </li>
             <li class="flex items-start space-x-3">
               <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
               <div>
-                <strong class="font-bold text-[#0F172A] block">Photos Delivered in 2 Hours</strong>
-                <p class="text-xs text-[#555D6B] mt-0.5">High-resolution, date-stamped photographs of boundary markers, gates, and roads.</p>
+                <strong class="font-bold text-[#0F172A] block">You get clear photos the same day</strong>
+                <p class="text-xs text-[#555D6B] mt-0.5">After every visit, we send real photos of your gate, boundary, and surroundings straight to your WhatsApp.</p>
               </div>
             </li>
             <li class="flex items-start space-x-3">
               <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</div>
               <div>
-                <strong class="font-bold text-[#0F172A] block">Zero Payment Required Today</strong>
-                <p class="text-xs text-[#555D6B] mt-0.5">You only pay when you approve the monitoring cadence and surveyor route.</p>
+                <strong class="font-bold text-[#0F172A] block">No payment needed right now</strong>
+                <p class="text-xs text-[#555D6B] mt-0.5">Just fill in the form. We'll call you, understand your property, and share a plan. You pay only if you want to go ahead.</p>
               </div>
             </li>
           </ul>
@@ -251,7 +251,7 @@
                 </div>
                 <input type="tel" id="leadPhone" name="phoneNumber" required placeholder="98765 43210" autocomplete="tel" maxlength="10" class="w-full px-4 py-3.5 bg-transparent border-0 text-sm text-[#0F172A] placeholder-slate-400 outline-none">
               </div>
-              <span class="text-[11px] text-[#555D6B] mt-1 block">Your relationship manager will reach out via WhatsApp / phone within 2–4 business hours.</span>
+              <span class="text-[11px] text-[#555D6B] mt-1 block">Your relationship manager will reach out via WhatsApp / phone within 24–48 business hours.</span>
             </div>
 
             <!-- Field 3: Email ID -->
@@ -275,6 +275,30 @@
               </select>
             </div>
 
+            <!-- Field 5: Property Location -->
+            <div>
+              <label for="leadPropertyLocation" class="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1.5">
+                Property Location <span class="text-[#E2004B]">*</span>
+              </label>
+              <input type="text" id="leadPropertyLocation" name="propertyLocation" required placeholder="e.g. Kompally, Shamshabad, Chevella, Shadnagar…" autocomplete="off" class="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-[#FAFAFA] text-sm text-[#0F172A] placeholder-slate-400 focus:bg-white focus:border-[#E2004B] focus:ring-2 focus:ring-[#E2004B]/20 outline-none transition-all">
+              <span class="text-[11px] text-[#555D6B] mt-1 block">Locality, area, or landmark nearest to your plot / house.</span>
+            </div>
+
+            <!-- Field 6: Approximate Property Size / Plan Interest -->
+            <div>
+              <label for="leadPropertySize" class="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1.5">
+                Approximate Property Size <span class="text-[#E2004B]">*</span>
+              </label>
+              <select id="leadPropertySize" name="propertySize" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-[#FAFAFA] text-sm text-[#0F172A] focus:bg-white focus:border-[#E2004B] focus:ring-2 focus:ring-[#E2004B]/20 outline-none transition-all cursor-pointer">
+                <option value="" disabled selected>Select Property Size / Plan</option>
+                <option value="Below 1,000 sq. yds. (Residential Plot / Villa)">Below 1,000 sq. yds. — Residential Plot / Villa</option>
+                <option value="1,000 sq. yds. to 1 Acre (Large Plot / Layout)">1,000 sq. yds. to 1 Acre — Large Plot / Layout</option>
+                <option value="Above 1 Acre (Farmland / Agricultural / Estate)">Above 1 Acre — Farmland / Agricultural / Estate</option>
+                <option value="Not Sure — Need Guidance">Not Sure — Need Guidance</option>
+              </select>
+              <span class="text-[11px] text-[#555D6B] mt-1 block">This helps us assign the right plan and relationship manager.</span>
+            </div>
+
             <!-- Submit Button -->
             <div class="pt-2">
               <button type="submit" id="leadSubmitBtn" data-track="lead_form_submit" data-track-name="Submit Property Details" data-track-location="lead_form" class="w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#E2004B] hover:bg-[#BF003F] active:scale-[0.99] transition-all shadow-md shadow-[#E2004B]/25 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-wait">
@@ -292,7 +316,7 @@
                   Zero payment required now
                 </span>
                 <span>•</span>
-                <span>Response in 2–4 hrs</span>
+                <span>Response in 24–48 hrs</span>
                 <span>•</span>
                 <span>100% Confidential</span>
               </div>
@@ -311,7 +335,7 @@
 
 <!-- 10. REFINED EDITORIAL FOOTER -->
 <footer class="bg-white border-t border-slate-200/80 py-12" data-purpose="site-footer">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100"><div class="flex items-center space-x-4"><img alt="KONU" class="h-8 w-auto object-contain rounded" src="./konu_logo.jpg"><span class="text-xs text-[#555D6B] font-medium pl-4 border-l border-slate-200">Surveyor-grade property vigilance &amp; asset management.</span></div></div><div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs font-medium text-[#555D6B] gap-2"><p class="">© 2024 KONU Technologies Pvt. Ltd. All rights reserved.</p><p class="">Regional Centers: Hyderabad • Bengaluru • Chennai • Mumbai</p></div></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100"><div class="flex items-center space-x-4"><img alt="KONU" class="h-8 w-auto object-contain rounded" src="./konu_logo.jpg"><span class="text-xs text-[#555D6B] font-medium pl-4 border-l border-slate-200">Surveyor-grade property vigilance &amp; asset management.</span></div></div><div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs font-medium text-[#555D6B] gap-2"><p class="">© 2024 KONU Technologies Pvt. Ltd. All rights reserved.</p><p class="">Regional Centers: Hyderabad</p></div></div>
 </footer>
 
 <!-- Interactive Logic, Marketing Tags & CRM Integration Scripts -->
