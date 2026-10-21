@@ -367,11 +367,11 @@
       // Option B: Zoho CRM Native Web-to-Lead Form Settings
       // Set enabled: true and fill in your Zoho CRM form code and token if using Zoho's native Web-to-Lead
       zohoWebToLead: {
-        enabled: false,
-        actionUrl: 'https://crm.zoho.in/crm/WebToLeadForm', // Use https://crm.zoho.com/crm/WebToLeadForm if US data center
-        xnQsjsdp: '', // Your Zoho CRM Form Code (xnQsjsdp)
-        xmIwtLD: '',  // Your Zoho CRM Module Token (xmIwtLD)
-        actionType: 'TGVhZHM=', // Encoded "Leads" module
+        enabled: true,
+        actionUrl: 'https://crm.zoho.in/crm/WebToLeadForm',
+        xnQsjsdp: '6130573fea728e51aedf3dab0699fecd8322a5de9c41f532b8f53cbb5112ba28',
+        xmIwtLD:  '00c5d1e2b2de11fa396d757268078ab1d4f4141fe49c8bf2170cab13787de23cb3941b0f408b85ea240c90116e339d52',
+        actionType: 'TGVhZHM=',
         returnURL: 'thank-you.html'
       },
 
@@ -610,6 +610,22 @@
         return;
       }
 
+      const propertyLocationVal = (document.getElementById('leadPropertyLocation')?.value || '').trim();
+      const propertySizeVal     = (document.getElementById('leadPropertySize')?.value || '').trim();
+
+      if (!propertyLocationVal) {
+        if (errorMessage) errorMessage.textContent = 'Please enter your property location.';
+        if (errorAlert) errorAlert.classList.remove('hidden');
+        document.getElementById('leadPropertyLocation')?.focus();
+        return;
+      }
+      if (!propertySizeVal) {
+        if (errorMessage) errorMessage.textContent = 'Please select your approximate property size.';
+        if (errorAlert) errorAlert.classList.remove('hidden');
+        document.getElementById('leadPropertySize')?.focus();
+        return;
+      }
+
       // Split Full Name into First Name & Last Name (Zoho CRM strictly requires 'Last Name')
       const nameParts = fullName.trim().split(/\s+/);
       const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : '';
@@ -721,18 +737,25 @@
 
           const returnUrlWithParams = `${window.location.origin}${window.location.pathname.replace('code.html', '')}${CRM_CONFIG.redirectDestination}?ref=${encodeURIComponent(leadRef)}&name=${encodeURIComponent(fullName)}&phone=${encodeURIComponent(phone)}&plan=${encodeURIComponent(interestedPlan)}`;
 
+          // Read the two new fields
+          const propertyLocation = (document.getElementById('leadPropertyLocation')?.value || '').trim();
+          const propertySize     = (document.getElementById('leadPropertySize')?.value || '').trim();
+
           const zohoFields = {
-            'xnQsjsdp': CRM_CONFIG.zohoWebToLead.xnQsjsdp,
-            'xmIwtLD': CRM_CONFIG.zohoWebToLead.xmIwtLD,
-            'actionType': CRM_CONFIG.zohoWebToLead.actionType || 'TGVhZHM=',
-            'returnURL': returnUrlWithParams,
-            'First Name': firstName,
-            'Last Name': lastName,
-            'Email': email,
-            'Mobile': `${countryCode} ${phone}`,
-            'Phone': `${countryCode} ${phone}`,
-            'Lead Source': 'Ad Campaign - KONU MySecure',
-            'City': locationVal,
+            'xnQsjsdp':    CRM_CONFIG.zohoWebToLead.xnQsjsdp,
+            'xmIwtLD':     CRM_CONFIG.zohoWebToLead.xmIwtLD,
+            'actionType':  CRM_CONFIG.zohoWebToLead.actionType || 'TGVhZHM=',
+            'returnURL':   returnUrlWithParams,
+            // Standard Zoho Enquiries fields
+            'First Name':  firstName,
+            'Last Name':   lastName,
+            'Email':       email,
+            'Phone':       `${countryCode} ${phone}`,
+            'Lead Source': 'Website',
+            // Custom fields (API names from Zoho Webform)
+            'LEADCF49':    residence,       // Current Residence
+            'LEADCF21':    propertyLocation, // Property Address / Location
+            'LEADCF50':    propertySize,    // Approximate Property Size
             'Description': zohoDescription
           };
 
