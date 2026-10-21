@@ -37,6 +37,17 @@
     }
   </script>
 
+  <!-- Guard: redirect direct visitors back to homepage -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      // Must arrive with a ref param (set by the form submission script)
+      if (!params.get('ref') && !params.get('name') && !document.referrer.includes(window.location.hostname)) {
+        window.location.replace('index.html');
+      }
+    })();
+  </script>
+
   <!-- Marketing Analytics & Ad Conversion Attribution -->
   <script>
     window.dataLayer = window.dataLayer || [];
